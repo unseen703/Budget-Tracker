@@ -6,7 +6,7 @@ node_modules/
 .env
 /.pnp
 .pnp.js
-/package.json
+
 package-lock.json
 routes/
 models/

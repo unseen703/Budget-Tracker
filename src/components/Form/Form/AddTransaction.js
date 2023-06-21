@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { GlobalContext } from "../../../context/GlobalState";
-import moment from "moment";
+
 import {
   TextField,
   Typography,
@@ -132,7 +132,7 @@ const AddTransaction = () => {
             }
             break;
           case "date":
-            setFormData({ ...formData, date: moment(e.target.value).format("YYYY-MM-DD") });
+            setFormData({ ...formData, date: e.value });
             break;
           default:
             break;
@@ -227,7 +227,7 @@ const AddTransaction = () => {
           type="date"
           label="date"
           value={formData.date}
-          onChange={(e) => setFormData({ ...formData, date: moment(e.target.value).format("YYYY-MM-DD") })}
+          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
           fullWidth
         />
       </Grid>
