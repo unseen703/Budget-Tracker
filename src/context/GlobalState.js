@@ -7,11 +7,9 @@ const initialState = {
   transactions: [],
   error: null,
   loading: true,
-  // { id: 1, text: "Flower", amount: -20 },
-  // { id: 2, text: "Salary", amount: +500 },
-  // { id: 3, text: "Book", amount: +48 },
-  // { id: 4, text: "Cycle", amount: -202 },
+
 };
+const url = process.env.REACT_APP_URL;
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
@@ -20,10 +18,11 @@ export const GlobalProvider = ({ children }) => {
   //Actions
   const getTransaction = async () => {
     try {
-      const res = await axios.get("/api/v1/transactions/");
+      const {data} = await axios.get(`${url}`);
+      console.log(data);
       dispatch({
         type: "GET_TRANSACTIONS",
-        payload: res.data.data,
+        payload: data.data,
       });
     } catch (error) {
       console.log(error);
@@ -35,7 +34,7 @@ export const GlobalProvider = ({ children }) => {
   };
   const deleteTransaction = async (id) => {
     try {
-      await axios.delete(`/api/v1/transactions/${id}`);
+      await axios.delete(`${url}/${id}`);
       dispatch({
         type: "DELETE_TRANSACTION",
         payload: id,
@@ -56,7 +55,7 @@ export const GlobalProvider = ({ children }) => {
       },
     };
     try {
-      const res = await axios.post("/api/v1/transactions", transaction, config);
+      const res = await axios.post(`${url}`, transaction, config);
       // console.log(res);
       dispatch({
         type: "ADD_TRANSACTION",
