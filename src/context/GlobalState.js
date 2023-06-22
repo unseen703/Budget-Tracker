@@ -20,7 +20,7 @@ export const GlobalProvider = ({ children }) => {
   //Actions
   const getTransaction = async () => {
     try {
-      const res = await axios.get("api/v1/transactions");
+      const res = await axios.get("/api/v1/transactions/");
       dispatch({
         type: "GET_TRANSACTIONS",
         payload: res.data.data,
@@ -67,6 +67,7 @@ export const GlobalProvider = ({ children }) => {
       });
     }
   };
+  console.log(state);
   const balance = state.transactions.reduce((acc, cur) =>  cur.type === "Expense" ? acc - cur.amount : acc + cur.amount,   0);
 
   return (
