@@ -26,6 +26,7 @@ export const GlobalProvider = ({ children }) => {
         payload: res.data.data,
       });
     } catch (error) {
+      console.log(error);
       dispatch({
         type: "TRANSACTION_ERROR",
         payload: error,
@@ -40,6 +41,7 @@ export const GlobalProvider = ({ children }) => {
         payload: id,
       });
     } catch (error) {
+      console.log(error);
       dispatch({
         type: "TRANSACTION_ERROR",
         payload: error,
@@ -61,6 +63,7 @@ export const GlobalProvider = ({ children }) => {
         payload: res.data.data,
       });
     } catch (error) {
+      console.log(error);
       dispatch({
         type: "TRANSACTION_ERROR",
         payload: error,
