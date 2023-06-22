@@ -52,7 +52,7 @@ export const GlobalProvider = ({ children }) => {
   const addTransaction = async (transaction) => {
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type":"application/json",
       },
     };
     try {
