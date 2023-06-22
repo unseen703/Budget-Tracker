@@ -39,7 +39,7 @@ const Form = () => {
 
   return (
     <Card className={classes.root}>
-      <CardHeader title={"Expense Tracker"} subheader="Powered by Speechly" />
+      <CardHeader title={"ExpenseEasy"} subheader="Powered by Speechly" />
       <CardContent>
         <Typography variant="h5" align="center">
           Your Balance ₹{balance}
