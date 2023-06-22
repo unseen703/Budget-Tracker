@@ -18,8 +18,10 @@ export const GlobalProvider = ({ children }) => {
   //Actions
   const getTransaction = async () => {
     try {
-      const {data} = await axios.get(`${url}`);
-      console.log(data);
+      // const {data} = try { await axios.get(`${url}`)} catch (e) { returne};
+      let data;
+      try { await axios.get("https://budget-tracker-back.onrender.com").then((res) => { data = res.data }); } catch (error) { console.log(error); }
+      // console.log(data);
       dispatch({
         type: "GET_TRANSACTIONS",
         payload: data.data,
@@ -34,7 +36,7 @@ export const GlobalProvider = ({ children }) => {
   };
   const deleteTransaction = async (id) => {
     try {
-      await axios.delete(`${url}/${id}`);
+      try { await  axios.delete(`https://budget-tracker-back.onrender.com/${id}`).then((res) => { console.log("success");}); } catch (error) { console.log(error); }
       dispatch({
         type: "DELETE_TRANSACTION",
         payload: id,
@@ -55,7 +57,7 @@ export const GlobalProvider = ({ children }) => {
       },
     };
     try {
-      const res = await axios.post(`${url}`, transaction, config);
+      const res = await axios.post(`https://budget-tracker-back.onrender.com`, transaction, config);
       // console.log(res);
       dispatch({
         type: "ADD_TRANSACTION",
@@ -69,7 +71,7 @@ export const GlobalProvider = ({ children }) => {
       });
     }
   };
-  console.log(state);
+  // console.log(state);
   const balance = state.transactions.reduce((acc, cur) =>  cur.type === "Expense" ? acc - cur.amount : acc + cur.amount,   0);
 
   return (
