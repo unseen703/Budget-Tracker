@@ -20,7 +20,7 @@ export const GlobalProvider = ({ children }) => {
     try {
       // const {data} = try { await axios.get(`${url}`)} catch (e) { returne};
       let data;
-      try { await axios.get("https://budget-tracker-back.onrender.com").then((res) => { data = res.data }); } catch (error) { console.log(error); }
+      try { await axios.get("https://localhost:5000").then((res) => { data = res.data }); } catch (error) { console.log(error); }
       // console.log(data);
       dispatch({
         type: "GET_TRANSACTIONS",
@@ -36,7 +36,7 @@ export const GlobalProvider = ({ children }) => {
   };
   const deleteTransaction = async (id) => {
     try {
-      try { await  axios.delete(`https://budget-tracker-back.onrender.com/${id}`).then((res) => { console.log("success");}); } catch (error) { console.log(error); }
+      try { await  axios.delete(`http://localhost:5000/${id}`).then((res) => { console.log("success");}); } catch (error) { console.log(error); }
       dispatch({
         type: "DELETE_TRANSACTION",
         payload: id,
@@ -57,7 +57,7 @@ export const GlobalProvider = ({ children }) => {
       },
     };
     try {
-      const res = await axios.post(`https://budget-tracker-back.onrender.com`, transaction, config);
+      const res = await axios.post(`http://localhost:5000/`, transaction, config);
       // console.log(res);
       dispatch({
         type: "ADD_TRANSACTION",
