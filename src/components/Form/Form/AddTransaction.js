@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { GlobalContext } from "../../../context/GlobalState";
+import * as moment from "moment";
 
 import {
   TextField,
@@ -228,7 +229,9 @@ const AddTransaction = () => {
           type="date"
           label="date"
           value={formData.date}
-          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+          onChange={(e) => setFormData({ ...formData, date:moment(transaction.date).format(
+            "YYYY-MM-DD"
+          )} )}
           fullWidth
         />
       </Grid>
