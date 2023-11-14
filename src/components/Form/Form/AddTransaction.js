@@ -229,7 +229,7 @@ const AddTransaction = () => {
           type="date"
           label="date"
           value={formData.date}
-          onChange={(e) => setFormData({ ...formData, date:moment(transaction.date).format(
+          onChange={(e) => setFormData({ ...formData, date:moment(e.target.value ).format(
             "YYYY-MM-DD"
           )} )}
           fullWidth
