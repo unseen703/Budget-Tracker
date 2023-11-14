@@ -52,7 +52,7 @@ const AddTransaction = () => {
     
   // }, [segment]);
 
-  const handleNullSubmit = () => {
+  const handleNullSubmit = (e) => {
     e.preventDefault();
     confirmAlert({
       title: "Please fill out all required fields",
